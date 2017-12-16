@@ -1,0 +1,24 @@
+div {
+    padding: 10px 0;
+}
+
+.mt {
+    margin-top: 8px;
+}
+
+.ph {
+    padding-left: 0px;
+    padding-right: 8px;
+}
+
+.bordered {
+    border: solid 1px #000000;
+}
+
+.w30 {
+    width: 30%;
+}
+
+.fill-danger {
+    background-color: #ff0000; /* very dangerous */
+}

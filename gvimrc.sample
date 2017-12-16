@@ -1,0 +1,45 @@
+" ------------ 文字コードなど
+" このファイルの文字コード
+scriptencoding utf-8
+
+
+" ------------ 配色
+colorscheme slate
+
+
+" ------------ フォント
+if has('mac')
+    set guifont=Ricty\ Diminished:h14
+elseif has('unix')
+    set guifont=Ricty\ Diminished\ 13
+else
+    set guifont=Consolas:h11
+    set guifontwide=MS_Gothic:h11
+endif
+
+function! s:incFontSize(delta)
+    let &guifont=substitute(&guifont, '\v([0-9.]+)$',
+            \ '\=(string(str2float(submatch(1))+'
+            \ . string(a:delta) . '))', '')
+endfunction
+
+" ------------ ウィンドウ配置
+winp 100 50
+set lines=40 columns=84
+
+
+
+" ------------ キーマッピング ------------
+" ------------ ファイルを開く
+nnoremap <Leader>eg :e ~/dotfiles/.gvimrc<CR>
+
+" ------------ フォントサイズ
+nnoremap <F12> :call <SID>incFontSize(0.5)<CR>
+nnoremap <S-F12> :call <SID>incFontSize(-0.5)<CR>
+
+
+
+" ------------ 環境独自の設定ファイル ------------
+if filereadable(expand("~/.gvimrc.local"))
+    source ~/.gvimrc.local
+endif
